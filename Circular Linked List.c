@@ -15,6 +15,20 @@ void linkedListTraversal(struct node* head){
     while(ptr!= head);
 }
 
+struct node* inserAtFirst(struct node* head, int data){
+    struct node * ptr = (struct node*) malloc(sizeof(struct node));
+    ptr -> data = data;
+    struct node * p = head ->next;
+    while(p->next!=head){
+        p = p->next;
+    }
+    // At this point p points to the last node of this circular linked list
+    p->next = ptr;
+    ptr->next = head;
+    head = ptr;
+    return head;
+}
+
 int main(){
     struct node*head;
     struct node*second;
@@ -43,6 +57,11 @@ int main(){
     fourth->data = 1;
     fourth->next = head;
 
+    printf("\nCircular Linked list before insertion\n");
      linkedListTraversal(head);
+     head = inserAtFirst(head, 80);
+     printf("Circular Linked list after insertion\n");
+     linkedListTraversal(head);
+
     return 0;
 }
