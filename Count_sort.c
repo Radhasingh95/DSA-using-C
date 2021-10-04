@@ -1,5 +1,15 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<limits.h>
+
+void printArray(int *a, int n)
+{
+    for(int i = 0;i< n;i++)
+    {
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+}
 
 int maximum(int a[], int n)
 {
@@ -24,9 +34,9 @@ void countSort(int *a, int n)
     int *count = (int *)malloc((max+1)*sizeof(int));
 
     // Initialize the array elements to 0
-    for(i = 0;i < n;i++)
+    for(i = 0;i < max+1;i++)
     {
-        a[i] = 0;
+        count[i] = 0;
     }
 
     // Increment the corresponding index in the count array
@@ -43,7 +53,11 @@ void countSort(int *a, int n)
          if(count[i]>0)
          {
              a[j] = i;
+             count[i] = count[i] - 1;
+             j++;
          }
+         
+         else{i++;}
     }
 
 
