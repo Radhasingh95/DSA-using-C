@@ -40,7 +40,7 @@ void push(struct stack *ptr, int val)
     }
 }
 
-char pop(struct stack *ptr)
+char pop(struct stack * ptr)
 {
     if (isEmpty(ptr))
     {
